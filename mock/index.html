@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>标题页设计稿 · 溯梦</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    background: #07040f;
+    color: #cfd2ff;
+    font-family: "Songti SC", "Noto Serif SC", serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: 48px 24px;
+  }
+  h1 { font-size: 15px; letter-spacing: 0.5em; color: #b8a06a; font-weight: 500; }
+  p { font-size: 13px; color: #6f74a8; letter-spacing: 0.15em; text-align: center; line-height: 2; }
+  a.card {
+    display: block; width: min(560px, 92vw);
+    border: 1px solid rgba(201,168,106,0.25);
+    border-radius: 14px;
+    padding: 26px 30px;
+    text-decoration: none;
+    background: linear-gradient(160deg, rgba(201,168,106,0.06), rgba(20,14,40,0.4));
+    transition: all .3s;
+  }
+  a.card:hover { border-color: rgba(201,168,106,0.6); box-shadow: 0 0 40px rgba(201,168,106,0.12); transform: translateY(-2px); }
+  a.card .name { font-size: 22px; letter-spacing: 0.35em; color: #e6ddc8; margin-bottom: 8px; }
+  a.card .desc { font-size: 13px; color: #8a8fc0; letter-spacing: 0.1em; line-height: 1.9; }
+  .num { color: #b8a06a; margin-right: 12px; }
+</style>
+</head>
+<body>
+  <h1>溯 梦 · 标 题 页 设 计 稿</h1>
+  <p>三版方案均使用同一张主视觉实图渲染，点击进去可完整体验。<br>看完全部三版后告诉我你选哪一版（也可以指出想混搭的细节）。</p>
+
+  <a class="card" href="/mock/title-a.html">
+    <div class="name"><span class="num">壹</span>画 廊 陈 列</div>
+    <div class="desc">主视觉装裱为金线画框，完整陈列不遮挡。标题悬于画上，按钮收在画下。仪式感最强，像美术馆里的一幅画。</div>
+  </a>
+  <a class="card" href="/mock/title-b.html">
+    <div class="name"><span class="num">贰</span>门 扉 两 侧</div>
+    <div class="desc">左栏竖排标题与功能按钮，右侧整幅主视觉顶天立地。图文分区清晰，画面利用率最高，适合宽屏。</div>
+  </a>
+  <a class="card" href="/mock/title-c.html">
+    <div class="name"><span class="num">叁</span>沉 入 梦 境</div>
+    <div class="desc">主视觉铺满全屏但只用暗角收边，标题嵌进画面上方留白，按钮浮于石阶之上。沉浸感最强，改动最小。</div>
+  </a>
+</body>
+</html>

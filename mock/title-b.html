@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>贰 · 门扉两侧</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Songti SC", "Noto Serif SC", serif; }
+  .layout { display: grid; grid-template-columns: minmax(360px, 42%) 1fr; height: 100vh; }
+  .panel {
+    background: linear-gradient(180deg, #0b0718 0%, #07040f 100%);
+    border-right: 1px solid rgba(201,168,106,0.35);
+    box-shadow: 30px 0 60px rgba(0,0,0,0.55);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    gap: 4vh; padding: 5vh 40px; position: relative; z-index: 2;
+  }
+  .title-vertical {
+    writing-mode: vertical-rl;
+    font-size: clamp(52px, 7vh, 84px);
+    letter-spacing: 0.35em;
+    color: #e9e2f5; font-weight: 500;
+    text-shadow: 0 0 34px rgba(167,139,250,0.5);
+  }
+  .title-en { font-size: 10px; letter-spacing: 0.45em; color: rgba(167,139,250,0.5); }
+  .quote { font-size: 13px; line-height: 2.4; letter-spacing: 0.15em; color: rgba(180,185,230,0.7); text-align: center; }
+  .buttons { display: flex; flex-direction: column; gap: 14px; width: min(240px, 100%); }
+  .btn {
+    font-family: inherit; cursor: pointer; width: 100%;
+    font-size: 15px; letter-spacing: 0.4em; text-indent: 0.4em;
+    padding: 14px 0; border-radius: 4px;
+    background: transparent; color: #dcd6c8;
+    border: 1px solid rgba(201,168,106,0.45);
+    transition: all .35s;
+  }
+  .btn:hover { border-color: rgba(201,168,106,0.9); box-shadow: 0 0 26px rgba(201,168,106,0.22); color: #f5edd8; }
+  .btn.primary { background: linear-gradient(160deg, rgba(201,168,106,0.22), rgba(201,168,106,0.08)); color: #f0e6cd; }
+  .stats { font-size: 10px; letter-spacing: 0.22em; color: rgba(138,143,192,0.7); display: flex; flex-direction: column; gap: 8px; align-items: center; }
+  .art { position: relative; overflow: hidden; }
+  .art img { width: 100%; height: 100%; object-fit: cover; object-position: 38% 50%; display: block; }
+  .art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7,4,15,0.35), transparent 22%); }
+  .back { position: fixed; top: 18px; left: 22px; font-size: 12px; color: rgba(184,160,106,0.8); text-decoration: none; letter-spacing: 0.2em; z-index: 5; }
+  @media (max-width: 760px) {
+    .layout { grid-template-columns: 1fr; grid-template-rows: 46vh 1fr; }
+    .art { order: -1; }
+    .title-vertical { writing-mode: horizontal-tb; letter-spacing: 0.5em; }
+  }
+</style>
+</head>
+<body>
+  <a class="back" href="/mock/">← 返回方案列表</a>
+  <div class="layout">
+    <div class="panel">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:14px;">
+        <div class="title-vertical">溯梦</div>
+        <div class="title-en">D R E A M T R A C E</div>
+      </div>
+      <p class="quote">传说，梦境共有三十层。<br>走到尽头的人，能带回一个愿望。</p>
+      <div class="buttons">
+        <button class="btn primary">入 梦</button>
+        <button class="btn">轮回殿</button>
+        <button class="btn">梦境图鉴</button>
+      </div>
+      <div class="stats">
+        <span>梦尘 ✨ 1493 · 最深 32 层</span>
+        <span>入梦 26 次 · 抵达尽头 5 次</span>
+      </div>
+    </div>
+    <div class="art"><img src="./art/ui-title.webp" alt="梦境之门"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>叁 · 沉入梦境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Songti SC", "Noto Serif SC", serif; height: 100vh; overflow: hidden; position: relative; background: #07040f; }
+  .bg { position: absolute; inset: 0; }
+  .bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* 只收暗角，不压整体：画面保持完整可见 */
+  .vignette { position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 120% 90% at 50% 45%, transparent 55%, rgba(5,3,12,0.75) 100%),
+      linear-gradient(180deg, rgba(5,3,12,0.35) 0%, transparent 22%, transparent 70%, rgba(5,3,12,0.82) 100%);
+  }
+  .top { position: absolute; top: 6vh; left: 0; right: 0; text-align: center; z-index: 2; }
+  .title-cn {
+    font-size: clamp(40px, 5.5vw, 62px);
+    letter-spacing: 0.55em; text-indent: 0.55em;
+    color: #ece5f7; font-weight: 500;
+    text-shadow: 0 2px 34px rgba(0,0,0,0.8), 0 0 30px rgba(167,139,250,0.45);
+  }
+  .title-en { margin-top: 12px; font-size: 11px; letter-spacing: 0.5em; color: rgba(200,195,235,0.65); text-shadow: 0 1px 12px rgba(0,0,0,0.9); }
+  .dock {
+    position: absolute; left: 50%; bottom: 3.5vh; transform: translateX(-50%); z-index: 2;
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+    width: min(92vw, 620px);
+    padding: 22px 20px 16px;
+    background: linear-gradient(180deg, rgba(10,6,20,0.55), rgba(10,6,20,0.78));
+    border: 1px solid rgba(201,168,106,0.3);
+    border-radius: 10px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+  }
+  .buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: nowrap; width: 100%; }
+  .btn {
+    font-family: inherit; cursor: pointer; white-space: nowrap;
+    font-size: 15px; letter-spacing: 0.3em; text-indent: 0.3em;
+    padding: 12px clamp(14px, 3vw, 30px); border-radius: 4px;
+    background: transparent; color: #dcd6c8;
+    border: 1px solid rgba(201,168,106,0.45);
+    transition: all .35s;
+  }
+  .btn:hover { border-color: rgba(201,168,106,0.9); box-shadow: 0 0 26px rgba(201,168,106,0.25); color: #f5edd8; }
+  .btn.primary { background: linear-gradient(160deg, rgba(201,168,106,0.25), rgba(201,168,106,0.1)); color: #f0e6cd; }
+  .stats { font-size: 10px; letter-spacing: 0.22em; color: rgba(160,165,210,0.85); display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; }
+  .back { position: fixed; top: 18px; left: 22px; font-size: 12px; color: rgba(184,160,106,0.85); text-decoration: none; letter-spacing: 0.2em; z-index: 5; text-shadow: 0 1px 8px #000; }
+</style>
+</head>
+<body>
+  <a class="back" href="/mock/">← 返回方案列表</a>
+  <div class="bg"><img src="./art/ui-title.webp" alt="梦境之门"></div>
+  <div class="vignette"></div>
+  <div class="top">
+    <div class="title-cn">溯 梦</div>
+    <div class="title-en">D R E A M T R A C E</div>
+  </div>
+  <div class="dock">
+    <div class="buttons">
+      <button class="btn primary">入 梦</button>
+      <button class="btn">轮回殿</button>
+      <button class="btn">梦境图鉴</button>
+    </div>
+    <div class="stats">
+      <span>梦尘 ✨ 1493</span><span>最深 32 层</span><span>入梦 26 次</span><span>尽头 5 次</span>
+    </div>
+  </div>
+</body>
+</html>
