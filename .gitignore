@@ -1,0 +1,6 @@
+node_modules/
+dist/
+dist-minitool/
+dist-pages/
+release/
+.DS_Store
