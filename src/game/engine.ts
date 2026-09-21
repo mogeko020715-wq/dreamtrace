@@ -165,7 +165,7 @@ function applyEffect(run: RunState, eff: Effect): RunState {
     const idx = relics.findIndex((r) => CURSED_RELICS.includes(r));
     if (idx >= 0) {
       const [rid] = relics.splice(idx, 1);
-      log.push(mkLog(`泉水没过头顶的那一刻，「${relicById(rid)?.name}」在你怀中化为乌有。诅咒解除了。`, 'relic'));
+      log.push(mkLog(`泉水没过头顶的那一刻，「${relicById(rid)?.name}」在你怀中化为乌有。反噬平息了。`, 'relic'));
     }
   }
 
@@ -224,7 +224,7 @@ function startCombat(run: RunState, enemy: Enemy): RunState {
   let next: RunState = { ...run, combat: { enemy, fled: false, rounds: 0 }, phase: 'combat', log, seenEnemies };
   if (hasRelic(next, 'blood_dagger')) {
     const s = { ...next.stats, hp: next.stats.hp - 3 };
-    next = { ...next, stats: s, log: [...log, mkLog('血契匕首吮吸着你的鲜血。（生命 -3）', 'bad')] };
+    next = { ...next, stats: s, log: [...log, mkLog('棘梦匕首吮吸着你的体温。（生命 -3）', 'bad')] };
   }
   return next;
 }
@@ -250,7 +250,7 @@ export function combatAction(run: RunState, action: CombatAction): RunState {
 
   if (action === 'flee') {
     if (isBoss) {
-      log.push(mkLog('守护者封死了退路——此战不死不休！', 'combat'));
+      log.push(mkLog('守护者封住了退路——此战唯有一胜！', 'combat'));
     } else if (Math.random() < 0.55) {
       log.push(mkLog(`你甩开了 ${enemy.name}，消失在梦的褶皱里。`, 'info'));
       return finishTurn({ ...run, combat: null, phase: 'event', log });

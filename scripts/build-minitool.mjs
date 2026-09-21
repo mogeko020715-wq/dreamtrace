@@ -11,7 +11,8 @@ import path from 'node:path';
 const root = path.resolve(import.meta.dirname, '..');
 const dist = path.join(root, 'dist-minitool');
 const releaseDir = path.join(root, 'release');
-const zipPath = path.join(releaseDir, 'dreamtrace-minitool-v1.zip');
+const version = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8')).version;
+const zipPath = path.join(releaseDir, `dreamtrace-minitool-v${version}.zip`);
 
 // ── 1. 构建 ──────────────────────────────────────────────
 console.log('▸ vite build (minitool config)…');

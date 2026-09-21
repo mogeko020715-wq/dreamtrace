@@ -344,7 +344,7 @@ function GameScreen({
           <span>⚔️ 攻击 {effectiveAtk(run)}</span>
           <span>🛡️ 防御 {effectiveDef(run)}</span>
           <span>💰 梦晶 {s.gold}</span>
-          <span>💀 击杀 {run.kills}</span>
+          <span>✨ 击败 {run.kills}</span>
         </div>
         {run.relics.length > 0 && (
           <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-[#c9a86a]/15 pt-3">
@@ -498,7 +498,7 @@ function GameScreen({
             )}
             <div className="mb-6 flex justify-center gap-6 text-sm text-indigo-200/70">
               <span>抵达 {run.depth} 层</span>
-              <span>击杀 {run.kills}</span>
+              <span>击败 {run.kills}</span>
               <span className="text-amber-200">梦尘 +{dust}</span>
             </div>
             <div className="flex justify-center gap-4">
@@ -591,7 +591,7 @@ function CombatPanel({ run, onCombat, skillCost: cost }: { run: RunState; onComb
           }`}
         >
           逃 离
-          <div className="text-xs opacity-70">{isBoss ? '不死不休' : '55% 成功'}</div>
+          <div className="text-xs opacity-70">{isBoss ? '不可逃离' : '55% 成功'}</div>
         </button>
       </div>
     </div>

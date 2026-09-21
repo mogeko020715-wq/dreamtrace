@@ -8,13 +8,13 @@ export const RELICS: Relic[] = [
   { id: 'tapir_horn', name: '梦貘之角', icon: '🦣', desc: '战斗胜利额外获得 8 梦晶。' },
   { id: 'feather', name: '沉眠之羽', icon: '🪶', desc: '「凝神一击」的精神消耗减半。' },
   { id: 'mirror_mask', name: '镜面具', icon: '🎭', desc: '防御 +2。' },
-  { id: 'blood_dagger', name: '血契匕首', icon: '🗡️', desc: '攻击 +4，但每场战斗开始时失去 3 点生命。' },
+  { id: 'blood_dagger', name: '棘梦匕首', icon: '🗡️', desc: '攻击 +4，但每场战斗开始时失去 3 点生命。' },
   { id: 'candle', name: '不灭烛火', icon: '🕯️', desc: '击败每层守护者后，完全回复生命与精神。' },
   { id: 'stardust', name: '星尘瓶', icon: '✨', desc: '轮回时获得的梦尘 +50%。' },
   { id: 'purse', name: '饕餮钱袋', icon: '👛', desc: '从事件获得的梦晶 +30%。' },
   { id: 'lucid_ring', name: '清醒之戒', icon: '💍', desc: '受到的精神伤害减半（向上取整）。' },
-  { id: 'whisper_box', name: '呢喃之匣', icon: '📦', desc: '【诅咒】每深入一层 MP -2，但战斗胜利额外获得 10 梦晶。' },
-  { id: 'broken_crown', name: '碎梦王冠', icon: '👑', desc: '【诅咒】ATK +5，但 DEF -2。' },
+  { id: 'whisper_box', name: '呢喃之匣', icon: '📦', desc: '【反噬】每深入一层 MP -2，但战斗胜利额外获得 10 梦晶。' },
+  { id: 'broken_crown', name: '碎梦王冠', icon: '👑', desc: '【反噬】ATK +5，但 DEF -2。' },
   { id: 'eye_of_dreamlord', name: '梦主之瞳', icon: '👁️', desc: '【梦魇限定】攻击 +2，「凝神一击」伤害提升至 2.2 倍。唯有在梦魇尽头仍保持清醒者，方能持有此瞳。' },
 ];
 
@@ -26,7 +26,7 @@ const MOBS: Enemy[] = [
   { id: 'whisper', name: '低语之影', icon: '👤', hp: 14, maxHp: 14, atk: 5, def: 0, kind: 'mob', intro: '墙角的黑影立了起来，对你窃窃私语。' },
   { id: 'pup', name: '梦魇幼兽', icon: '🐺', hp: 18, maxHp: 18, atk: 6, def: 1, kind: 'mob', intro: '一只长着眼睛的雾兽低吼着扑来。' },
   { id: 'ghost', name: '镜中怨影', icon: '🪞', hp: 16, maxHp: 16, atk: 7, def: 0, kind: 'mob', intro: '碎镜里爬出另一个你，眼神怨毒。' },
-  { id: 'ghoul', name: '食尸梦鬼', icon: '🧟', hp: 22, maxHp: 22, atk: 6, def: 2, kind: 'mob', intro: '腐臭的梦鬼拖着残躯逼近。' },
+  { id: 'ghoul', name: '蚀梦兽', icon: '🌫️', hp: 22, maxHp: 22, atk: 6, def: 2, kind: 'mob', intro: '溃散的雾兽拖着残躯逼近。' },
   { id: 'thief', name: '拾梦窃贼', icon: '🦝', hp: 15, maxHp: 15, atk: 5, def: 0, kind: 'mob', intro: '窃贼抱紧偷来的梦晶，龇牙咧嘴。' },
   { id: 'eater', name: '噬光者', icon: '🕷️', hp: 26, maxHp: 26, atk: 8, def: 1, kind: 'mob', intro: '一团会移动的黑暗亮起八只眼睛，周围的光正被它吸走。' },
   { id: 'spider', name: '织梦蛛', icon: '🕸️', hp: 24, maxHp: 24, atk: 7, def: 2, kind: 'mob', intro: '巨蛛倒挂在梦的经纬之间，每一根丝都连着一段别人的噩梦。' },
@@ -34,7 +34,7 @@ const MOBS: Enemy[] = [
 
 const BOSSES: Record<number, Enemy> = {
   10: { id: 'knight', name: '夜魇骑士', icon: '♞', hp: 52, maxHp: 52, atk: 9, def: 2, kind: 'boss', intro: '第一层梦境的守护者。黑甲骑士横剑拦住去路：「回头，或长眠。」' },
-  20: { id: 'queen', name: '遗忘女王', icon: '👸', hp: 82, maxHp: 82, atk: 13, def: 4, kind: 'boss', intro: '第二层梦境的守护者。女王端坐白骨王座：「你叫什么？……想不起来，就留下吧。」' },
+  20: { id: 'queen', name: '遗忘女王', icon: '👸', hp: 82, maxHp: 82, atk: 13, def: 4, kind: 'boss', intro: '第二层梦境的守护者。女王端坐灰石王座：「你叫什么？……想不起来，就留下吧。」' },
   30: { id: 'dreamlord', name: '梦 主', icon: '🌑', hp: 125, maxHp: 125, atk: 16, def: 5, kind: 'final', intro: '梦境尽头，万物的梦中倒影。它没有形状，因为你就是它的形状。' },
 };
 
@@ -62,7 +62,7 @@ export function spawnBoss(depth: number, nightmare = false): Enemy {
 /** 图鉴用：全部敌人（梦魇 + 守护者） */
 export const ALL_ENEMIES: Enemy[] = [...MOBS, BOSSES[10], BOSSES[20], BOSSES[30]];
 
-/** 诅咒遗物 */
+/** 反噬遗物 */
 export const CURSED_RELICS = ['whisper_box', 'broken_crown'];
 
 export const hasCurse = (relics: string[]) => relics.some((r) => CURSED_RELICS.includes(r));
@@ -107,7 +107,7 @@ export const EVENTS: GameEvent[] = [
     text: '一座小小的神龛嵌在树洞里，供奉着一块看不出形状的黑色石头，香火未熄。',
     choices: [
       { text: '虔诚祈祷', effect: { san: 8, log: '你双手合十。黑暗变得温柔了些。（精神 +8）' } },
-      { text: '以血献祭', hint: '生命 -8，攻击 +2', effect: { hp: -8, atk: 2, log: '黑石吸走了你的血，吐出一缕红光没入掌心。（生命 -8，攻击 +2）' } },
+      { text: '以体温献祭', hint: '生命 -8，攻击 +2', effect: { hp: -8, atk: 2, log: '黑石吸走了你的体温，吐出一缕红光没入掌心。（生命 -8，攻击 +2）' } },
       { text: '偷走供品', hint: '富贵险中求', gamble: { chance: 0.6,
         success: { gold: 20, log: '你揣起供品就跑，什么也没发生……暂时。（梦晶 +20）' },
         fail: { combat: 'whisper', log: '龛中黑石裂开，一道怨影扑了出来！' } } },
@@ -124,7 +124,7 @@ export const EVENTS: GameEvent[] = [
     ],
   },
   {
-    id: 'door', title: '血色木门', icon: '🚪',
+    id: 'door', title: '朱红木门', icon: '🚪',
     text: '一扇鲜红的门突兀地立在旷野上，没有墙。门后传来抓挠声，一下，又一下。',
     choices: [
       { text: '推门而入', hint: '有埋伏', effect: { combat: 'random', log: '门后扑出一团黑影！' } },
@@ -155,7 +155,7 @@ export const EVENTS: GameEvent[] = [
     choices: [
       { text: '潜入潮中畅游', hint: '危险与机遇', gamble: { chance: 0.5,
         success: { maxHp: 8, hp: 8, log: '千万段记忆冲刷过你，生命变得更加厚重。生命上限 +8。' },
-        fail: { hp: -8, log: '一段溺亡者的记忆缠住了你！你挣扎着上岸。（生命 -8）' } } },
+        fail: { hp: -8, log: '一段沉没者的记忆缠住了你！你挣扎着上岸。（生命 -8）' } } },
       { text: '捡拾退潮的遗留', effect: { gold: 8, log: '潮水退去，留下几枚亮晶晶的梦晶。（梦晶 +8）' } },
     ],
   },
@@ -188,7 +188,7 @@ export const EVENTS: GameEvent[] = [
   },
   {
     id: 'blacksmith', title: '梦铁匠', icon: '⚒️',
-    text: '铁匠铺的炉火是冷的，铁匠却满头大汗。「梦里的铁，要用骨头里的热来打。」',
+    text: '铁匠铺的炉火是冷的，铁匠却满头大汗。「梦里的铁，要用心口里的热来打。」',
     choices: [
       { text: '请他打磨武器', hint: '梦晶 -30，攻击 +2', requires: { stat: 'gold', min: 30 }, effect: { gold: -30, atk: 2, log: '锤声如雷，火星四溅。（攻击 +2）' } },
       { text: '请他锻造护甲', hint: '梦晶 -30，防御 +1', requires: { stat: 'gold', min: 30 }, effect: { gold: -30, def: 1, log: '一层薄薄的梦铁覆上你的肩背。（防御 +1）' } },
@@ -229,15 +229,15 @@ export const EVENTS: GameEvent[] = [
     choices: [
       { text: '纵身跳过去', hint: '拼一把', gamble: { chance: 0.55,
         success: { atk: 2, gold: 10, log: '你在对岸捡到前人遗落的装备！（攻击 +2，梦晶 +10）' },
-        fail: { hp: -12, log: '你扒住断桥边缘，指甲翻了两个才爬上来。（生命 -12）' } } },
+        fail: { hp: -12, log: '你扒住断桥边缘，指尖磨破了才爬上来。（生命 -12）' } } },
       { text: '用梦晶铺路', hint: '梦晶 -10', requires: { stat: 'gold', min: 10 }, effect: { gold: -10, log: '梦晶化作点点浮桥，你安然走过。（梦晶 -10）' } },
     ],
   },
   {
-    id: 'altar', title: '血祭坛', icon: '🩸',
-    text: '祭坛上的血槽还是湿的，空气中飘着铁锈味。坛顶的浮雕是一只攥紧的拳头。',
+    id: 'altar', title: '赤石祭坛', icon: '🛕',
+    text: '祭坛上的凹槽还泛着暗红的光，空气中飘着铁锈味。坛顶的浮雕是一只攥紧的拳头。',
     choices: [
-      { text: '献血换力', hint: '生命 -12，攻击 +3', effect: { hp: -12, atk: 3, log: '血槽亮起红光，力量灼烧着你的血管。（生命 -12，攻击 +3）' } },
+      { text: '灼命换力', hint: '生命 -12，攻击 +3', effect: { hp: -12, atk: 3, log: '凹槽亮起红光，力量灼烧着你的四肢。（生命 -12，攻击 +3）' } },
       { text: '砸开祭坛', effect: { san: -5, gold: 18, log: '坛底藏着贡金。拳头浮雕似乎瞪了你一眼。（精神 -5，梦晶 +18）' } },
     ],
   },
@@ -257,17 +257,17 @@ export const EVENTS: GameEvent[] = [
       { text: '躺进去试试', hint: '谁会拒绝呢', gamble: { chance: 0.5,
         success: { healPct: 60, log: '棺材里舒服得不可思议，你美美睡了一觉。（生命大幅回复）' },
         fail: { combat: 'ghoul', log: '棺盖「砰」地合上了！黑暗中有什么东西压了上来！' } } },
-      { text: '搜查棺底夹层', effect: { gold: 10, log: '夹层里塞着陪葬的梦晶。（梦晶 +10）' } },
+      { text: '搜查棺底夹层', effect: { gold: 10, log: '夹层里塞着前人藏的梦晶。（梦晶 +10）' } },
     ],
   },
   {
-    id: 'dice', title: '命运骰局', icon: '🎲',
-    text: '两个骰子自己在桌上滚动，桌边空着两把椅子。椅子上方悬着一行字：「赢家通吃。」',
+    id: 'dice', title: '命运骰子', icon: '🎲',
+    text: '两个骰子自己在桌上滚动，桌边空着两把椅子。椅子上方悬着一行字：「胜者有赏。」',
     choices: [
-      { text: '押注一搏', hint: '梦晶 -10，输赢看命', requires: { stat: 'gold', min: 10 }, gamble: { chance: 0.5,
+      { text: '掷骰一搏', hint: '梦晶 -10，输赢看命', requires: { stat: 'gold', min: 10 }, gamble: { chance: 0.5,
         success: { gold: 30, log: '骰子停在你喊的数字上！桌面吐出一堆梦晶。（净赚梦晶 +20）' },
-        fail: { log: '骰子转出了嘲讽的表情。你的注金消失了。（梦晶 -10）' } } },
-      { text: '离开赌桌', effect: { log: '骰子在你身后悻悻地停了。' } },
+        fail: { log: '骰子转出了嘲讽的表情。你的梦晶被吞掉了。（梦晶 -10）' } } },
+      { text: '转身离开', effect: { log: '骰子在你身后悻悻地停了。' } },
     ],
   },
   {
@@ -300,7 +300,7 @@ export const EVENTS: GameEvent[] = [
     id: 'forge_heart', title: '心之火炉', icon: '❤️‍🔥', minDepth: 10,
     text: '一颗巨大的心脏悬在半空搏动，每一次收缩都迸出火花。靠近能感到滚烫的生命力。',
     choices: [
-      { text: '以心头血淬炼', hint: '生命 -8，生命上限 +10', effect: { hp: -8, maxHp: 10, log: '疼痛过后，你的心跳变得如鼓点般有力。生命上限 +10。' } },
+      { text: '以心火淬炼', hint: '生命 -8，生命上限 +10', effect: { hp: -8, maxHp: 10, log: '疼痛过后，你的心跳变得如鼓点般有力。生命上限 +10。' } },
       { text: '在炉边取暖', effect: { san: 6, log: '心跳声像母亲的摇篮曲。（精神 +6）' } },
     ],
   },
@@ -333,7 +333,7 @@ export const EVENTS: GameEvent[] = [
         fail: { san: -5, gold: -5, log: '他突然睁眼抓住了你的手腕！你扔下几枚梦晶才挣脱。（精神 -5，梦晶 -5）' } } },
     ],
   },
-  // ──────────────── 第二批：以物易物 / 连锁 / 诅咒 ────────────────
+  // ──────────────── 第二批：以物易物 / 连锁 / 反噬 ────────────────
   {
     id: 'pawnshop', title: '当梦铺', icon: '⚖️',
     text: '柜台后的掌柜没有脸，声音却热络：「梦里的东西都能当——困意、旧梦、心跳，样样收。」',
@@ -380,7 +380,7 @@ export const EVENTS: GameEvent[] = [
     id: 'wind_core', title: '风眼之核', icon: '💠', chainOnly: true,
     text: '青色核心触手可及，里面蜷缩着一场小小的飓风。',
     choices: [
-      { text: '取出核心', effect: { atk: 3, hp: -8, log: '飓风顺着手臂钻进你的血脉！（攻击 +3，风刃割伤生命 -8）' } },
+      { text: '取出核心', effect: { atk: 3, hp: -8, log: '飓风顺着手臂钻进你的身体！（攻击 +3，风刃擦伤，生命 -8）' } },
       { text: '将其封印', effect: { san: 8, maxSan: 2, log: '风暴归于沉寂，你的心也跟着静了。（精神 +8，精神上限 +2）' } },
     ],
   },
@@ -456,7 +456,7 @@ export const EVENTS: GameEvent[] = [
   },
   {
     id: 'insomniac', title: '失眠者', icon: '🌃',
-    text: '一个满眼血丝的人坐在悬崖边数羊：「……九千九百九十八……九千九百九十九……」',
+    text: '一个满眼红丝的人坐在悬崖边数羊：「……九千九百九十八……九千九百九十九……」',
     choices: [
       { text: '陪他聊会儿天', effect: { san: 5, gold: 5, log: '他讲了很多现实里的事。临别时塞给你几枚梦晶。（精神 +5，梦晶 +5）' } },
       { text: '试着催眠他', hint: '积德或有损', gamble: { chance: 0.5,
@@ -505,12 +505,12 @@ export const EVENTS: GameEvent[] = [
     ],
   },
   {
-    id: 'debt_collector', title: '讨债鬼', icon: '👻',
-    text: '一只提着灯笼的鬼拦住你，翻开一本血账：「你上上世欠的梦晶，连本带利，该还了。」',
+    id: 'debt_collector', title: '讨债灵', icon: '🧾',
+    text: '一只提着灯笼的精怪拦住你，翻开一本旧账：「你上上世欠的梦晶，连本带利，该还了。」',
     choices: [
-      { text: '如数偿还', hint: '梦晶 -15', requires: { stat: 'gold', min: 15 }, effect: { gold: -15, san: 8, log: '账销了，鬼走了，你一身轻松。（精神 +8）' } },
-      { text: '讨价还价', hint: '梦晶 -8', requires: { stat: 'gold', min: 8 }, effect: { gold: -8, log: '你们磨了半个时辰，最终以半价成交。鬼嘟囔着走了。' } },
-      { text: '拔腿就跑', hint: '它不干', effect: { combat: 'ghoul', log: '讨债鬼把灯笼一摔，现出本相扑了上来！' } },
+      { text: '如数偿还', hint: '梦晶 -15', requires: { stat: 'gold', min: 15 }, effect: { gold: -15, san: 8, log: '账销了，它走了，你一身轻松。（精神 +8）' } },
+      { text: '讨价还价', hint: '梦晶 -8', requires: { stat: 'gold', min: 8 }, effect: { gold: -8, log: '你们磨了半个时辰，最终以半价成交。它嘟囔着走了。' } },
+      { text: '拔腿就跑', hint: '它不干', effect: { combat: 'ghoul', log: '讨债灵把灯笼一摔，现出本相扑了上来！' } },
     ],
   },
   {
@@ -519,7 +519,7 @@ export const EVENTS: GameEvent[] = [
     choices: [
       { text: '祭拜前世的自己', effect: { san: 6, log: '你上了一炷香。某一世的你似乎投来了感激的一瞥。（精神 +6）' } },
       { text: '掘开最新的一座', hint: '有违天和', gamble: { chance: 0.5,
-        success: { gold: 25, log: '棺中没有尸骨，只有陪葬的梦晶。（梦晶 +25）' },
+        success: { gold: 25, log: '棺中没有主人，只有整齐码放的梦晶。（梦晶 +25）' },
         fail: { hp: -10, log: '棺中伸出一只和你一模一样的手，抓住了你的脚踝！（生命 -10）' } } },
     ],
   },
@@ -527,7 +527,7 @@ export const EVENTS: GameEvent[] = [
     id: 'hourglass', title: '倒流沙漏', icon: '⏳',
     text: '一只巨大的沙漏悬在半空，金色的沙时而向上流，时而向下流，偶尔停住，发出钟摆般的声响。',
     choices: [
-      { text: '将沙漏倒转', hint: '梦晶 -20，生命 +10，精神 +10', requires: { stat: 'gold', min: 20 }, effect: { gold: -20, hp: 10, san: 10, log: '时光在你周身倒淌了一小段，伤口和杂念一并退去了。（生命 +10，精神 +10）' } },
+      { text: '将沙漏倒转', hint: '梦晶 -20，生命 +10，精神 +10', requires: { stat: 'gold', min: 20 }, effect: { gold: -20, hp: 10, san: 10, log: '时光在你周身倒淌了一小段，疲惫和杂念一并退去了。（生命 +10，精神 +10）' } },
       { text: '催沙漏快流', hint: '深度 +2', effect: { depth: 2, san: -5, log: '沙流如瀑，你眼前的梦境飞速翻页。（深入两层，精神 -5）' } },
       { text: '不碰它', effect: { log: '有些时间不该被惊动。' } },
     ],
@@ -561,13 +561,13 @@ export const EVENTS: GameEvent[] = [
     ],
   },
   {
-    id: 'bone_gamble', title: '白骨赌局', icon: '☠️', minDepth: 10,
-    text: '几只白骨围坐一圈，用指骨当筹码。见你来了，它们让出一个位置，眼窝里的鬼火晃了晃。',
+    id: 'bone_gamble', title: '星骸弈局', icon: '♟️', minDepth: 10,
+    text: '几具星骸围坐一圈，以星屑为注。见你来了，它们让出一个位置，眼窝里的微光晃了晃。',
     choices: [
-      { text: '押上气血入局', hint: '赢了脱胎换骨', gamble: { chance: 0.55,
-        success: { atk: 5, log: '白骨们哗啦一声散了架——愿赌服输，它们的力量归你了！（攻击 +5）' },
-        fail: { hp: -15, log: '白骨们从你身上抽走了一管血气当彩头。（生命 -15）' } } },
-      { text: '谢绝邀请', effect: { log: '白骨们耸耸肩，继续它们的赌局。指骨碰撞声清脆得像风铃。' } },
+      { text: '以精气神入局', hint: '胜者力量大增', gamble: { chance: 0.55,
+        success: { atk: 5, log: '星骸们哗啦一声散了架——它们认输了，力量归你了！（攻击 +5）' },
+        fail: { hp: -15, log: '星骸们从你身上抽走了一团梦境的微光当彩头。（生命 -15）' } } },
+      { text: '谢绝邀请', effect: { log: '星骸们耸耸肩，继续它们的弈局。星屑碰撞声清脆得像风铃。' } },
     ],
   },
   {
@@ -589,10 +589,10 @@ export const EVENTS: GameEvent[] = [
     ],
   },
   {
-    id: 'atonement_spring', title: '赎罪泉', icon: '⛲', minDepth: 12,
-    text: '一眼泉水从白骨堆中涌出，水清得近乎透明。碑上刻着：「此泉不洗血污，只洗契约有痕者。」',
+    id: 'atonement_spring', title: '涤梦泉', icon: '⛲', minDepth: 12,
+    text: '一眼泉水从星骸堆中涌出，水清得近乎透明。碑上刻着：「此泉不洗尘埃，只洗契约有痕者。」',
     choices: [
-      { text: '以泉水净化诅咒', hint: '梦晶 -20，移除一件诅咒遗物', requires: { stat: 'gold', min: 20 }, requiresCurse: true, effect: { gold: -20, removeCurse: true, san: 5, log: '你沉入泉中，泉水凉得像一场宽恕。（梦晶 -20，精神 +5）' } },
+      { text: '以泉水涤净反噬', hint: '梦晶 -20，移除一件反噬遗物', requires: { stat: 'gold', min: 20 }, requiresCurse: true, effect: { gold: -20, removeCurse: true, san: 5, log: '你沉入泉中，泉水凉得像一场宽恕。（梦晶 -20，精神 +5）' } },
       { text: '掬水洗把脸', effect: { san: 8, log: '水清冽甘甜，洗去了几分疲惫。（精神 +8）' } },
       { text: '离开', effect: { log: '泉水映出你的倒影——倒影的脖子上，似乎缠着细细的红线。' } },
     ],
